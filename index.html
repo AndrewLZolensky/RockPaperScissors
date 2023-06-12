@@ -6,102 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script>
-
-        playGame();
-
-        function playGame() {
-            let playerScore = 0;
-            let computerScore = 0;
-            let round = 1;
-
-            while (round <= 5) {
-                let playerChoice = getUserInput();
-                let computerChoice = getComputerChoice();
-
-                let result = getWinner(playerChoice, computerChoice);
-                console.log(result);
-
-                if (result == "win") {
-                    playerScore++;
-                    round++;
-                } else if (result == "lose") {
-                    computerScore++;
-                    round++;
-                }
-
-                if (computerScore == 3) {
-                    alert("Computer wins!");
-                    return "computer";
-                } else if (playerScore == 3) {
-                    alert("You win!");
-                    return "player";
-                }
-            }
-        }
-
-
-        function getComputerChoice() {
-            const options = ["rock", "paper", "scissors"];
-            const ix = Math.floor(Math.random() * 3);
-            return options[ix];
-        }
-
-        function getUserInput() {
-            let move;
-            let running = true;
-            while (running) {
-                move = prompt("Play Rock, Paper, or Scissors:");
-                if (move.toLowerCase() == "rock" || move.toLowerCase() == "scissors" || move.toLowerCase() == "paper") {
-                    running = false;
-                }
-            }
-            return move;
-        }
-
-        function bullshitFunction() {
-            let sign = prompt("What's your sign?");
-            console.log(sign);
-            return sign;
-        }
-
-        function getWinner(playerGuessRaw, machineGuessRaw) {
-            const playerGuess = playerGuessRaw.toLowerCase();
-            const machineGuess = machineGuessRaw.toLowerCase();
-
-            if (playerGuess == machineGuess) {
-                console.log("You both played " + playerGuess + ", it's a tie!")
-                return "tie";
-            } else if (playerGuess == "rock" && machineGuess == "scissors") {
-                console.log("You played " + playerGuess + ", but the computer played " +
-                    machineGuess + ". You win!")
-                return "win";
-            } else if (playerGuess == "rock" && machineGuess == "paper") {
-                console.log("You played " + playerGuess + ", but the computer played " +
-                    machineGuess + ". You lose!")
-                return "lose";
-            } else if (playerGuess == "scissors" && machineGuess == "paper") {
-                console.log("You played " + playerGuess + ", but the computer played " +
-                    machineGuess + ". You win!")
-                return "win";
-            } else if (playerGuess == "scissors" && machineGuess == "rock") {
-                console.log("You played " + playerGuess + ", but the computer played " +
-                    machineGuess + ". You lose!")
-                return "lose";
-            } else if (playerGuess == "paper" && machineGuess == "scissors") {
-                console.log("You played " + playerGuess + ", but the computer played " +
-                    machineGuess + ". You lose!")
-                return "lose";
-            } else {
-                console.log("You played " + playerGuess + ", but the computer played " +
-                    machineGuess + ". You win!")
-                return "win";
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="rps.js" defer></script>
 </head>
 
 <body>
+
+    <div class="container">
+        <div class="score-bar">
+            <p id="round">Round 1</p>
+            <div id="scores">
+                <p id="player-score">Player: 0</p>
+                <p id="computer-score">Computer: 0</p>
+            </div>
+        </div>
+        <div class="game-bar">
+            <button id="rock">
+                <p>Rock</p>
+            </button>
+            <button id="paper">
+                <p>Paper</p>
+            </button>
+            <button id="scissors">
+                <p>Scissors</p>
+            </button>
+        </div>
+        <div class="message-bar">
+            <p id="message">Pick a Move to Begin!</p>
+        </div>
+    </div>
 
 </body>
 
